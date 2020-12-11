@@ -1,0 +1,3 @@
+public void addPokemon(Pokemon poke){
+  this.pokemons.add(poke);
+}
