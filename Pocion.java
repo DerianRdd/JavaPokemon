@@ -1,7 +1,7 @@
 /**
  * pocion
  */
-public class Pocion {
+public class Pocion{
     
     private String tipo;
 
@@ -52,4 +52,9 @@ public class Pocion {
             System.out.println("Se ha aumentado la defensa de "+poke.getApodo()+" un 10%");
         }
     }
+    @Override
+	public String toString() {
+		return tipo;
+	}
+
 }

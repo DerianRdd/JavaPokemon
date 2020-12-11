@@ -205,6 +205,13 @@ public class Pokemon {
             System.out.println(this.apodo+"fallo");
         } 
     }
+
+	@Override
+	public String toString() {
+		return apodo+System.lineSeparator()+estado+System.lineSeparator()+vida+" PS";
+	}
+
+    
 }
 
 
