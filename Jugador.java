@@ -8,6 +8,10 @@ public class Jugador {
 
     public Jugador(String nombre){
         this.nombre=nombre;
+
+        this.pokemons = new ArrayList<Pokemon>();
+        this.pociones = new ArrayList<Pocion>();
+
         Pocion Vida1 = new Pocion("Vida");
         Pocion Vida2 = new Pocion("Vida");
         Pocion Ataque1 = new Pocion("Ataque");
