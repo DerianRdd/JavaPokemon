@@ -8,7 +8,8 @@ public class Combate {
 	public void elegirPokemons(Jugador jugador1, Jugador jugador2){
 		int seleccionNumerica; //Para las elecciones del jugador
 		int limiteEleccion; //Limite de equipo
-		int elegirPokemon;
+		int elegirPokemon, elegirApodo ;
+		String apodoPokemon; //Por si se quiere un apodo, sino, se pone uno por defecto.
 	
 		Scanner lecturaNum = new Scanner(System.in);
 		Random randomNum = new Random();
@@ -38,19 +39,45 @@ public class Combate {
 						System.out.println("Selecciona el numero de pokemon a asignar");
 						elegirPokemon = lecturaNum.nextInt();
 					}else if(seleccionNumerica == 2){//se asigna aleatoriamiente
-							elegirPokemon = randomNum.nextInt(17); // de 0 a 17 (18 en total)
+							elegirPokemon = randomNum.nextInt(2); // de 0 a 17 (18 en total)
 					}else{
 						System.out.println("Opcion no valida, se tomara como aleatorio");
-						elegirPokemon = randomNum.nextInt(17);
+						elegirPokemon = randomNum.nextInt(2);
 					}
+					System.out.println("Desea asignar un apodo a su Pokemon " + i + "?\n1. Si\n2.No");
+					elegirApodo = lecturaNum.nextInt();
+					if (elegirApodo == 1){
+						System.out.println("Escriba el apodo de su pokemon " + i +":");
+						apodoPokemon=lecturaNum.nextLine(); //Leemos el apodo
+					 }else{
+					 	System.out.println("Pokemon " + i + " no tendra un apodo personalizado. Se usara un predeterminado");
+					 }
 					switch(elegirPokemon){ //Por cada case, una instancia de Pokemon y su asignacion al arrayList de jugador
-						case 0:
+						case 0: // Bellosom
+							if(elegirApodo == 1){ //(Apodo, Vida, ataque, defensa, velocidad, estado )
+								jugador1.addPokemon(new Bellosom(apodoPokemon, 150+(randomNum.nextInt(40)-20), 170+(randomNum.nextInt(40)-20), 
+									165+(randomNum.nextInt(40)-20), 130+(randomNum.nextInt(40)-20), "Normal"));
+							}else{
+								jugador1.addPokemon(new Bellosom(apodoPokemon, 150+(randomNum.nextInt(40)-20), 170+(randomNum.nextInt(40)-20), 
+									165+(randomNum.nextInt(40)-20), 130+(randomNum.nextInt(40)-20), "Normal"));
+							}
 							break;
-						case 1:
+						case 1: // Meganium
+							if(elegirApodo == 1){
+								jugador1.addPokemon(new Meganium(apodoPokemon, ));
+							}else{
+								jugador1.addPokemon(new Meganium("Meganium", ));
+							}
 							break;
-						case 2:
+						case 2: // Sceptile
+							if(elegirApodo == 1){
+								jugador1.addPokemon(new Sceptile(apodoPokemon, ));
+							}else{
+								jugador1.addPokemon(new Sceptile("Sceptile", ));
+							}
 							break;
 						case 3:
+
 							break;
 						case 4:
 							break;
@@ -98,17 +125,32 @@ public class Combate {
 						System.out.println("Selecciona el numero de pokemon a asignar");
 						elegirPokemon = lecturaNum.nextInt();
 					}else if(seleccionNumerica == 2){//se asigna aleatoriamiente
-							elegirPokemon = randomNum.nextInt(17); // de 0 a 17 (18 en total)
+							elegirPokemon = randomNum.nextInt(2); // de 0 a 17 (18 en total)
 					}else{
 						System.out.println("Opcion no valida, se tomara como aleatorio");
-						elegirPokemon = randomNum.nextInt(17);
+						elegirPokemon = randomNum.nextInt(2);
 					}
 					switch(elegirPokemon){ //Por cada case, una instancia de Pokemon y su asignacion al arrayList de jugador
-						case 0:
+						case 0: // Bellosom
+							if(elegirApodo == 1){
+								jugador1.addPokemon(new Bellosom(apodoPokemon, ));
+							}else{
+								jugador1.addPokemon(new Bellosom("Bellosom", ));
+							}
 							break;
-						case 1:
+						case 1: // Meganium
+							if(elegirApodo == 1){
+								jugador1.addPokemon(new Meganium(apodoPokemon, ));
+							}else{
+								jugador1.addPokemon(new Meganium("Meganium", ));
+							}
 							break;
-						case 2:
+						case 2: // Sceptile
+							if(elegirApodo == 1){
+								jugador1.addPokemon(new Sceptile(apodoPokemon, ));
+							}else{
+								jugador1.addPokemon(new Sceptile("Sceptile", ));
+							}
 							break;
 						case 3:
 							break;
@@ -161,7 +203,6 @@ public class Combate {
 	public void iniciarCombate(Jugador jugador1, Jugador jugador2){
 		//Aqui se desempeña toda la atzion, los pokemon ya fueron creados y las pociones ya fueron asignadas
 		System.out.println("\n---------------FASE DE COMBATE---------------");
-		
 
 	}//Fin metodo iniciar combate
 
