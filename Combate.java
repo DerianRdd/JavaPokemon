@@ -2,6 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.IOException;
 
 public class Combate {
 
@@ -18,6 +19,7 @@ public class Combate {
 		Scanner lecturaString = new Scanner(System.in);
 		Random randomNum = new Random();
 
+		System.out.flush(); // Posiciona el cursor en el tope de la terminal
 		System.out.println("\n---------------FASE DE SELECCION---------------");
 
 		try{
@@ -39,16 +41,22 @@ public class Combate {
 			do{
 				for(int i = 1; i <= limiteEleccion; i++){
 					if(seleccionNumerica == 1){ //Se asigna manualmente
-						//Se supone antes de esto se despliega una lista de pokemons
-						System.out.println("Selecciona el numero de pokemon a asignar");
+						listaPokemons(); //Despliega una lista de pokemons disponibles con su numero asociado
+						System.out.println("Selecciona el numero de pokemon a elegir y presiona ENTER");
 						elegirPokemon = lecturaNum.nextInt();
+						if(elegirPokemon < 0 || elegirPokemon > 17){ //Verificamos que el usuario no sea gracioso
+							do{
+								System.out.println("Seleccion invalida. Intente de nuevo");
+								elegirPokemon = lecturaNum.nextInt();
+							}while(elegirPokemon < 0 || elegirPokemon > 17);
+						}
 					}else if(seleccionNumerica == 2){//se asigna aleatoriamiente
 							elegirPokemon = randomNum.nextInt(17); // de 0 a 17 (18 en total)
 					}else{
 						System.out.println("Opcion no valida, se tomara como aleatorio");
 						elegirPokemon = randomNum.nextInt(17); // de 0 a 17 (18 en total)
 					}
-					System.out.println("Desea asignar un apodo a su Pokemon " + i + "?\n1. Si\n2.No");
+					System.out.println("Desea asignar un apodo a su Pokemon " + i + "?\n1.Si\n2.No");
 					elegirApodo = lecturaNum.nextInt();
 					if (elegirApodo == 1){
 						System.out.println("Escriba el apodo de su pokemon " + i +":");
@@ -233,16 +241,22 @@ public class Combate {
 			do{
 				for(int i = 1; i <= limiteEleccion; i++){
 					if(seleccionNumerica == 1){ //Se asigna manualmente
-						//Se supone antes de esto se despliega una lista de pokemons
-						System.out.println("Selecciona el numero de pokemon a asignar");
+						listaPokemons(); //Despliega una lista de Pokemons con su numero asociado
+						System.out.println("Selecciona el numero de pokemon a asignar y presiona ENTER");
 						elegirPokemon = lecturaNum.nextInt();
+						if(elegirPokemon < 0 || elegirPokemon > 17){ //Verificamos que el usuario no sea gracioso
+							do{
+								System.out.println("Seleccion invalida. Intente de nuevo");
+								elegirPokemon = lecturaNum.nextInt();
+							}while(elegirPokemon < 0 || elegirPokemon > 17);
+						}
 					}else if(seleccionNumerica == 2){//se asigna aleatoriamiente
 							elegirPokemon = randomNum.nextInt(17); // de 0 a 17 (18 en total)
 					}else{
 						System.out.println("Opcion no valida, se tomara como aleatorio");
 						elegirPokemon = randomNum.nextInt(17); // de 0 a 17
 					}
-					System.out.println("Desea asignar un apodo a su Pokemon " + i + "?\n1. Si\n2.No");
+					System.out.println("Desea asignar un apodo a su Pokemon " + i + "?\n1.Si\n2.No");
 					elegirApodo = lecturaNum.nextInt();
 					if (elegirApodo == 1){
 						System.out.println("Escriba el apodo de su pokemon " + i +":");
@@ -419,7 +433,7 @@ public class Combate {
 				}
 			}while(seleccionNumerica != 1 && seleccionNumerica != 2);
 
-		//Fin del Try, falta el catch
+		//Fin del Try
 		}catch(InputMismatchException e){
 			System.out.println("\nERROR. Solo aceptamos numeros en las opciones");
 			elegirPokemons(jugador1, jugador2);
@@ -432,10 +446,32 @@ public class Combate {
 	}//Fin metodo elegirPokemons
 
 
+	public void clrscr(){
+	    //Clears Screen in java
+	    try {
+	        if (System.getProperty("os.name").contains("Windows"))
+	            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	        else
+	            Runtime.getRuntime().exec("clear");
+	    } catch (IOException | InterruptedException ex) {}
+	}
+
 	//Lista de pokemons disponibles
 	public void listaPokemons(){
-		
-	}
+
+		clrscr(); //Limpia la consola
+		System.out.flush(); // Posiciona el cursor en el tope de la terminal
+		System.out.println("*---------------POKEMONS DISPONIBLES A ELEGIR-------------*");
+		System.out.println("|                                                         |");
+		System.out.println("|   0.Arbok             6.Jolteon           12.Sceptile   |");
+		System.out.println("|   1.Bellosom          7.Magmar            13.Seviper    |");
+		System.out.println("|   2.Blastoise         8.Meganium          14.Swampert   |");
+		System.out.println("|   3.Blaziken          9.Nidoking          15.Torkoal    |");
+		System.out.println("|   4.Electabuzz       10.Pikachu           16.Venonat    |");
+		System.out.println("|   5.Flygon           11.Rhydon            17.Wailord    |");
+		System.out.println("|                                                         |");
+		System.out.println("*---------------------------------------------------------*");
+	} //Fin de metodo listaPokemons
 
 	//Aqui se desarrolla todo el combate
 	public void iniciarCombate(Jugador jugador1, Jugador jugador2){
