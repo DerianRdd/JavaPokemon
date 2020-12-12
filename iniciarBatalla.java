@@ -8,133 +8,29 @@ public void iniciarBatalla() {
     System.out.println(jugador2.getNombre()+": ");
     jugador2.cambiarPokemon();
     while(checarDebilitados(jugador1)==0 && checarDebilitados(jugador2) == 0){
-        System.out.println(jugador1.getPokemonActivo().getApodo());
-        System.out.println(jugador1.getPokemonActivo().getVida()+"/"jugador1.getPokemonActivo().getVidaMax());
-        if(jugador1.getPokemonActivo().getEstado() != "Normal"){
-            System.out.println(jugador1.getPokemonActivo().getEstado());
-        }
-        System.out.println(jugador1.getNombre()+"Que accion desea realizar?");
-        System.out.println("-----Acciones-----");
-        System.out.println("1. Usar "+jugador1.getPokemonActivo().getAtaque1()+"    2. Usar "+jugador1.getPokemonActivo().getAtaque2());
-        System.out.println("3. Usar Pocion en el Pokemon Activo   4.Cambiar Pokemon");
+        empezarTurno(jugador1);
         eleccion1 = scan.nextInt();
         while (eleccion1 <1 && eleccion1 >4){
             System.out.println("Ha elegido una opcion incorrecta, intentelo de nuevo");
-            eleccion = scan.nextInt();
+            eleccion1 = scan.nextInt();
         }
-        
-        System.out.println(jugador2.getPokemonActivo().getApodo());
-        System.out.println(jugador2.getPokemonActivo().getVida()+"/"jugador2.getPokemonActivo().getVidaMax());
-        if(jugador1.getPokemonActivo().getEstado() != "Normal"){
-            System.out.println(jugador2.getPokemonActivo().getEstado());
-        }
-        System.out.println(jugador2.getNombre()+"Que accion desea realizar?");
-        System.out.println("-----Acciones-----");
-        System.out.println("1. Usar "+jugador2.getPokemonActivo().getAtaque1()+"    2. Usar "+jugador2.getPokemonActivo().getAtaque2());
-        System.out.println("3. Usar Pocion en el Pokemon Activo   4.Cambiar Pokemon");
-        eleccion = scan.nextInt();
+        empezarTurno(jugador2);
+        eleccion2 = scan.nextInt();
         while (eleccion2 <1 && eleccion2 >4){
             System.out.println("Ha elegido una opcion incorrecta, intentelo de nuevo");
-            eleccion = scan.nextInt();
+            eleccion2 = scan.nextInt();
         }
         
         if(jugador1.getPokemonActivo().getVelocidad()>=jugador2.getPokemonActivo().getVelocidad()){
-            if (checarEstado(jugador1.getPokemonActivo())==1 && eleccion1 == 1 || eleccion1 == 2){
-                System.out.println(jugador1.getPokemonActivo().getApodo()+" se encuentra paralizado, no se puede mover!!");
-                jugador1.getPokemonActivo().setEstado("Normal");
-                System.out.println(jugador1.getPokemonActivo().getApodo()+" se ha curado de la paralisis!!");
-                
-            }else{
-                if(checarEstado(jugador1.getPokemonActivo())==2){
-                    System.out.println(jugador1.getPokemonActivo().getApodo()+" se resiente de la quemadura...");
-                    jugador1.getPokemonActivo().recibirdanio(3);
-                    eleccion(eleccion1, jugador1, jugador2);
-                }else{
-                    if(checarEstado(jugador1.getPokemonActivo())==3){
-                        System.out.println(jugador1.getPokemonActivo().getApodo()+" esta envenenado");
-                        jugador1.getPokemonActivo().recibirdanio(2);
-                        eleccion(eleccion1, jugador1, jugador2);
-                    }else{
-                        checarEstado(jugador1.getPokemonActivo())==4){
-                            System.out.println(jugador1.getPokemonActivo().getApodo()+" se debilitó!");
-                            eleccion(4, jugador1, jugador2);
-                        }
-                    }
-                }
-            }
-            if (checarEstado(jugador2.getPokemonActivo())==1 && eleccion2 == 1 || eleccion2 == 2){
-                System.out.println(jugador2.getPokemonActivo().getApodo()+" se encuentra paralizado, no se puede mover!!");
-                jugador2.getPokemonActivo().setEstado("Normal");
-                System.out.println(jugador2.getPokemonActivo().getApodo()+" se ha curado de la paralisis!!");
-                
-            }else{
-                if(checarEstado(jugador2.getPokemonActivo())==2){
-                    System.out.println(jugador2.getPokemonActivo().getApodo()+" se resiente de la quemadura...");
-                    jugador2.getPokemonActivo().recibirdanio(3);
-                    eleccion(eleccion2, jugador2, jugador1);
-                }else{
-                    if(checarEstado(jugador2.getPokemonActivo())==3){
-                        System.out.println(jugador2.getPokemonActivo().getApodo()+" esta envenenado");
-                        jugador2.getPokemonActivo().recibirdanio(2);
-                        eleccion(eleccion2, jugador2, jugador1);
-                    }else{
-                        checarEstado(jugador2.getPokemonActivo())==4){
-                            System.out.println(jugador2.getPokemonActivo().getApodo()+" se debilitó!");
-                            eleccion(4, jugador2, jugador1);
-                        }
-                    }
-                }
-            }
+            turno(checarEstado(jugador1.getPokemonActivo()),jugador1,jugador2, eleccion1);
+            turno(checarEstado(jugador2.getPokemonActivo()),jugador2,jugador1, eleccion2);
         }else{
-            if (checarEstado(jugador2.getPokemonActivo())==1 && eleccion2 == 1 || eleccion2 == 2){
-                System.out.println(jugador2.getPokemonActivo().getApodo()+" se encuentra paralizado, no se puede mover!!");
-                jugador2.getPokemonActivo().setEstado("Normal");
-                System.out.println(jugador2.getPokemonActivo().getApodo()+" se ha curado de la paralisis!!");
-                
-            }else{
-                if(checarEstado(jugador2.getPokemonActivo())==2){
-                    System.out.println(jugador2.getPokemonActivo().getApodo()+" se resiente de la quemadura...");
-                    jugador2.getPokemonActivo().recibirdanio(3);
-                    eleccion(eleccion2, jugador2, jugador1);
-                }else{
-                    if(checarEstado(jugador2.getPokemonActivo())==3){
-                        System.out.println(jugador2.getPokemonActivo().getApodo()+" esta envenenado");
-                        jugador2.getPokemonActivo().recibirdanio(2);
-                        eleccion(eleccion2, jugador2, jugador1);
-                    }else{
-                        checarEstado(jugador2.getPokemonActivo())==4){
-                            System.out.println(jugador2.getPokemonActivo().getApodo()+" se debilitó!");
-                            eleccion(4, jugador2, jugador1);
-                        }
-                    }
-                }
-            }
-            if (checarEstado(jugador1.getPokemonActivo())==1 && eleccion1 == 1 || eleccion1 == 2){
-                System.out.println(jugador1.getPokemonActivo().getApodo()+" se encuentra paralizado, no se puede mover!!");
-                jugador1.getPokemonActivo().setEstado("Normal");
-                System.out.println(jugador1.getPokemonActivo().getApodo()+" se ha curado de la paralisis!!");
-                
-            }else{
-                if(checarEstado(jugador1.getPokemonActivo())==2){
-                    System.out.println(jugador1.getPokemonActivo().getApodo()+" se resiente de la quemadura...");
-                    jugador1.getPokemonActivo().recibirdanio(3);
-                    eleccion(eleccion1, jugador1, jugador2);
-                }else{
-                    if(checarEstado(jugador1.getPokemonActivo())==3){
-                        System.out.println(jugador1.getPokemonActivo().getApodo()+" esta envenenado");
-                        jugador1.getPokemonActivo().recibirdanio(2);
-                        eleccion(eleccion1, jugador1, jugador2);
-                    }else{
-                        checarEstado(jugador1.getPokemonActivo())==4){
-                            System.out.println(jugador1.getPokemonActivo().getApodo()+" se debilitó!");
-                            eleccion(4, jugador1, jugador2);
-                        }
-                    }
-                }
-            }
+            turno(checarEstado(jugador2.getPokemonActivo()),jugador2,jugador1, eleccion2);
+            turno(checarEstado(jugador1.getPokemonActivo()),jugador1,jugador2, eleccion1);
         }
 
     }
+}
     if(checarDebilitados(jugador1)==1){
         System.out.println(jugador1.getNombre()+"Se ha quedado sin Pokemons!");
         System.out.println(jugador2.getNombre()+"es el ganador!");
@@ -194,6 +90,44 @@ public void eleccion(int ele, Jugador jug, Jugador jug2){
         default: //En teoria no deberiamos llegar a default
             System.out.println("Que raro, haz salido de la matrix");
             break;
+    }
+}
+
+public void empezarTurno(Jugador jug){
+    System.out.println(jug.getPokemonActivo().getApodo());
+    System.out.println(jug.getPokemonActivo().getVida()+"/"jug.getPokemonActivo().getVidaMax());
+    if(jug.getPokemonActivo().getEstado() != "Normal"){
+        System.out.println(jug.getPokemonActivo().getEstado());
+    }
+    System.out.println(jug.getNombre()+"Que accion desea realizar?");
+    System.out.println("-----Acciones-----");
+    System.out.println("1. Usar "+jug.getPokemonActivo().getAtaque1()+"    2. Usar "+jug.getPokemonActivo().getAtaque2());
+    System.out.println("3. Usar Pocion en el Pokemon Activo   4.Cambiar Pokemon");
+}
+
+public void turno(int estado, Jugador jug, Jugador jug2, int eleccion){
+    if (estado == 1 && eleccion == 1 || eleccion == 2){
+        System.out.println(jugador1.getPokemonActivo().getApodo()+" se encuentra paralizado, no se puede mover!!");
+        jugador1.getPokemonActivo().setEstado("Normal");
+        System.out.println(jugador1.getPokemonActivo().getApodo()+" se ha curado de la paralisis!!");
+        
+    }else{
+        if(estado==2){
+            System.out.println(jugador1.getPokemonActivo().getApodo()+" se resiente de la quemadura...");
+            jugador1.getPokemonActivo().recibirdanio(3);
+            eleccion(eleccion, jug, jug2);
+        }else{
+            if(estado==3){
+                System.out.println(jugador1.getPokemonActivo().getApodo()+" esta envenenado");
+                jugador1.getPokemonActivo().recibirdanio(2);
+                eleccion(eleccion, jug, jug2);
+            }else{
+                if(estado==4){
+                    System.out.println(jugador1.getPokemonActivo().getApodo()+" se debilitó!");
+                    eleccion(4, jug, jug2);
+                }
+            }
+        }
     }
 }
 
