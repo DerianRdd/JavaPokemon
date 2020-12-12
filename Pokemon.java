@@ -14,13 +14,14 @@ public class Pokemon {
 
 
 
-    public Pokemon(String apodo, int vidaMax, int ataque, int defensa, int velocidad) {
+    public Pokemon(String apodo, int vidaMax, int ataque, int defensa, int velocidad, String estado) {
         this.apodo = apodo;
         this.vidaMax = vidaMax;
         this.vida = this.vidaMax;
         this.ataque = ataque;
         this.defensa = defensa;
         this.velocidad = velocidad;
+        this.estado = estado;
     }
 
     public String getApodo() {
@@ -186,7 +187,7 @@ public class Pokemon {
                 poke.recibirdanio(danio);
             }
         }else{
-            System.out.println(this.apodo+"fallo");
+            System.out.println(this.apodo+" fallo");
         }
     }
 
@@ -202,7 +203,7 @@ public class Pokemon {
                 poke.recibirdanio(danio);
             }
         }else{
-            System.out.println(this.apodo+"fallo");
+            System.out.println(this.apodo+" fallo");
         } 
     }
 

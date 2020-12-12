@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jugador {
-    private String nombre;
+    String nombre;
     private ArrayList<Pocion> pociones;
     private ArrayList<Pokemon> pokemons;
 
@@ -46,7 +46,7 @@ public class Jugador {
     public void listarPokemons(){
         int i = 0;
         for(i=0; i<pokemons.size();i++){
-            System.out.println(i+". "+pokemons.get(i));
+            System.out.println((i+1)+". "+pokemons.get(i));
         }
     }
 
@@ -74,7 +74,7 @@ public class Jugador {
             }
             }
         }while(poke==0);
-        s.close();
+        //s.close();
     }
     
     public void addPokemon(Pokemon poke){
@@ -90,7 +90,7 @@ public class Jugador {
             Scanner scan = new Scanner(System.in);
             int eleccion = 0;
             for(int i=0; i<pociones.size();i++){
-                System.out.println(i+". "+pociones.get(i));
+                System.out.println((i+1)+". "+pociones.get(i));
             }
             System.out.println("Elija la pocion que desea usar");
             eleccion = scan.nextInt();
@@ -98,7 +98,7 @@ public class Jugador {
                 System.out.println("Ha elegido una opcion incorrecta, intentelo de nuevo");
                 eleccion = scan.nextInt();
             }
-            scan.close();
+            //scan.close();
             usarPocion(eleccion - 1);
         }else{
             System.out.println("No te quedan Pociones!!");

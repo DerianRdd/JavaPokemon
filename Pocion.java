@@ -40,7 +40,7 @@ public class Pocion{
             poke.setVida(poke.getVida()+recuperacion);
             System.out.println("Se han restaurado "+recuperacion+" PS a "+poke.getApodo());
         }
-        if(this.tipo == "danio"){
+        if(this.tipo == "Ataque"){
             int ataque = (int)(poke.getAtaque()*0.10);
             poke.setAtaque(poke.getAtaque()+ataque);
             System.out.println("Se ha aumentado el danio de "+poke.getApodo()+" un 10%");
