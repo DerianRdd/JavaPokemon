@@ -62,7 +62,7 @@ public class Jugador {
         listarPokemons();
         do{
             poke = s.nextInt();
-            if (poke<=1 || poke > pokemons.size() ){
+            if (poke<1 || poke > pokemons.size() ){
                 System.out.println("Ha elegido un pokemon no valido, intentelo de nuevo");
             }else{
                 if((!pokemons.get(poke-1).estado.equals("Debilitado"))){
@@ -80,5 +80,29 @@ public class Jugador {
     public void addPokemon(Pokemon poke){
         this.pokemons.add(poke);
       }
+
+    public Pokemon getPokemonActivo(){
+        return this.pokemons.get(0);
+    }
+
+    public void listarPociones(){
+        if(!pociones.isEmpty()){
+            Scanner scan = new Scanner(System.in);
+            int eleccion = 0;
+            for(int i=0; i<pociones.size();i++){
+                System.out.println(i+". "+pociones.get(i));
+            }
+            System.out.println("Elija la pocion que desea usar");
+            eleccion = scan.nextInt();
+            while (eleccion <1 && eleccion > pociones.size()){
+                System.out.println("Ha elegido una opcion incorrecta, intentelo de nuevo");
+                eleccion = scan.nextInt();
+            }
+            scan.close();
+            usarPocion(eleccion - 1);
+        }else{
+            System.out.println("No te quedan Pociones!!");
+        }
+    }
     
 }
