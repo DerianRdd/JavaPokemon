@@ -74,6 +74,7 @@ public class main{
                                                     //Ya elegidos, comenzamos el combate
                                                     Combate pelea = new Combate(); //Objeto combate, para el flujo de la pelea
                                                     pelea.elegirPokemons(jugador1, jugador2); //Iniciamos el combate
+						    op=3;
 					    }
 					    else{
 						System.out.println("Contrasenia o usuario incorrectos, intente de nuevo ");
@@ -108,6 +109,7 @@ public class main{
 					//Ya elegidos, comenzamos el combate
 					Combate pelea = new Combate(); //Objeto combate, para el flujo de la pelea
 					pelea.elegirPokemons(jugador1, jugador2); //Iniciamos el combate
+				    	op=3;
 				    }
 			    }
 			else{
