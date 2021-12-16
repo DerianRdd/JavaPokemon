@@ -10,7 +10,8 @@ import java.util.Scanner;
 import java.util.Formatter;
 
 public class main {
-    
+    static Scanner lectura = new Scanner(System.in);
+	
     public static void main(String[] args) {
         int op,op2;
         int p;
