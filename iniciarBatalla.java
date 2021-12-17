@@ -32,12 +32,44 @@ public void iniciarBatalla() {
     }
 }
     if(checarDebilitados(jugador1)==1){
-        System.out.println(jugador1.getNombre()+"Se ha quedado sin Pokemons!");
-        System.out.println(jugador2.getNombre()+"es el ganador!");
-    }else{
-        System.out.println(jugador2.getNombre()+"Se ha quedado sin Pokemons!");
-        System.out.println(jugador1.getNombre()+"es el ganador!");
-    }
+		    System.out.println(jugador1.getNombre()+" se ha quedado sin Pokemons!");
+		    System.out.println(jugador2.getNombre()+" es el ganador!");
+            main.J1JJ = main.juegosJugados(main.nomAr1);
+            main.J1JG = main.juegosGanados(main.nomAr1);
+            main.J1JP = main.juegosPerdidos(main.nomAr1);
+            main.J1JJ++;
+            main.J1JG++;
+            main.modificarEstadisticas(main.nomAr1, main.J1JJ, main.J1JG, main.J1JP);
+            System.out.println("Estadisticas del usuario 1:");
+            main.leerEstadistica(main.nomAr1);
+            main.J2JJ = main.juegosJugados(main.nomAr2);
+            main.J2JG = main.juegosGanados(main.nomAr2);
+            main.J2JP = main.juegosPerdidos(main.nomAr2);
+            main.J2JJ++;
+            main.J2JP++;
+            main.modificarEstadisticas(main.nomAr2, main.J2JJ, main.J2JG, main.J2JP);
+            System.out.println("Estadisticas del usuario 2:");
+            main.leerEstadistica(main.nomAr2);          
+		}else{
+		    System.out.println(jugador2.getNombre()+" se ha quedado sin Pokemons!");
+		    System.out.println(jugador1.getNombre()+" es el ganador!");
+            main.J2JJ = main.juegosJugados(main.nomAr2);
+            main.J2JG = main.juegosGanados(main.nomAr2);
+            main.J2JP = main.juegosPerdidos(main.nomAr2);
+            main.J2JJ++;
+            main.J2JG++;
+            main.modificarEstadisticas(main.nomAr2, main.J2JJ, main.J2JG, main.J2JP);
+            System.out.println("Estadisticas del usuario 2:");
+            main.leerEstadistica(main.nomAr2);
+            main.J1JJ = main.juegosJugados(main.nomAr1);
+            main.J1JG = main.juegosGanados(main.nomAr1);
+            main.J1JP = main.juegosPerdidos(main.nomAr1);
+            main.J1JJ++;
+            main.J1JP++;
+            main.modificarEstadisticas(main.nomAr1, main.J1JJ, main.J1JG, main.J1JP);
+            System.out.println("Estadisticas del usuario 1:");
+            main.leerEstadistica(main.nomAr1);     
+		}
 }
 
 public int checarDebilitados(Jugador jug){
