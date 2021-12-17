@@ -11,13 +11,13 @@ import java.util.Formatter;
 
 public class main {
     static Scanner lectura = new Scanner(System.in);
+
+	static int J1JJ,J1JP,J1JG,J2JJ,J2JP,J2JG; 
+	static String nomAr1,nomAr2,contra,contraJ1,contraJ2,usuario1,usuario2;
 	
     public static void main(String[] args) {
-        int op,op2;
-        int p;
-        int J1JJ,J1JP,J1JG,J2JJ,J2JP,J2JG; 
+        int op;
         Scanner sc = new Scanner(System.in);
-        String nomAr1,nomAr2,contra,contraJ1,contraJ2,usuario1,usuario2;
         do{
         System.out.println("1. Iniciar sesion para jugador 1");
         System.out.println("2. Crear cuenta");
